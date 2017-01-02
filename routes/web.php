@@ -20,3 +20,13 @@ use Carbon\Carbon;
 Route::get('test', function () {
     echo Carbon::now();
 });
+
+Route::group(['prefix' => 'admin'],function () {
+	Route::resource('cate','CateController', ['expert' => [
+		'show'
+		]]);
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
